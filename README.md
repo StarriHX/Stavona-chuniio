@@ -1,8 +1,7 @@
 
 # Stavona Chuniio
 
-Version D24.11.27
-
+Version D24.11.27  
 Updated on 2024/11/27
 
 ## 功能
@@ -17,11 +16,11 @@ Updated on 2024/11/27
 [chuniio]  
 path=StavonaIO.dll
 
-[StavonaIO]
-; 最短回报时间调整，据不可靠消息Ground Slider的回报时间约为20ms
-; 使用此功能可模拟Ground Slider的回报速度
-; 如果要关闭这个功能，请将值设置为'0'
-adjustTime=20
+[StavonaIO]  
+; 最短回报时间调整，据不可靠消息Ground Slider的回报时间约为20ms  
+; 使用此功能可模拟Ground Slider的回报速度  
+; 如果要关闭这个功能，请将值设置为'0'  
+adjustTime=20  
 
 ## 开发者使用说明
 
