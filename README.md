@@ -1,28 +1,37 @@
 
 # Stavona Chuniio
 
-Updated on 2024/8/31
+Version D24.11.27
+Updated on 2024/11/27
 
-## Features
-- Basic Features
-- Supports hot-plug and won't cause game timeout
-- Supports use native Ground Slider and Custom Air
+## 功能
+- 基本功能
+- 支持热插拔，没有设备时也不会导致timeout
+- 支持使用原生Ground Slider配合自制Air
+- 支持调整最短回报时间，可模拟Ground Slider回报速度
 
-## For Customers:
-Add the following text to segatools.ini
+## 消费者使用说明
+将以下选项写入到segatools.ini（如果已经有了就直接改）
 
 [chuniio]  
-path=Stavona.dll
+path=StavonaIO.dll
 
-## For Producter
+[StavonaIO]
+; 最短回报时间调整，据不可靠消息Ground Slider的回报时间约为20ms
+; 使用此功能可模拟Ground Slider的回报速度
+; 如果要关闭这个功能，请将值设置为'0'
+adjustTime=20
 
-- Please be sure that your Vendor ID is `0x303A` and your Product ID is `0x81F7`.
-- If your HID device has only one report, the LED function will be disabled.
+## 开发者使用说明
 
-## Communication
-- This library use raw USB HID for communicating.
+- 请确定你的设备的Vendor ID是 `0x303A` ，Product ID是 `0x81F7`.
+- 如果你的设备只有一个report，LED将无法使用
+- 如果需要自定义Product ID，请发个issue联系我
 
-### Controller -> Game
+## 通讯
+- 本项目使用Raw HID进行设备间通讯
+
+### 设备 -> 游戏
 
 - Raw HID Data
 ```
@@ -44,12 +53,12 @@ struct
 };
 ```
     
-- `reportID` is 0x01, don't change this.
-- `touchValue` are touch values from 入力１(touch1) to 入力３２(touch32).
-- `ir` is 6 air-string's data, only 6 bit are used.
-- `state` is test, service and coin button, only 3 bit are used.
+- `reportID` 是 0x01，不要更改
+- `touchValue` 是从 入力１(touch1) 到 入力３２(touch32)的触摸数据
+- `ir` 是6个Air-String的数据，但只使用6个bit.
+- `state` 是test，service和coin按键，只使用3个bit
 
-### Game -> Controller
+### 游戏 -> 设备
 - Raw HID Data
 ```
     02 00 00 00 00 00 00 00  
@@ -76,5 +85,5 @@ struct
 };
 ```
 
-- `reportID` is 0x02, don't change this.
-- LED data has 3 channel, so 1 led data need 3 byte, like 'r g b r g b r g b'.
+- `reportID` 是 0x02, 不要更改
+- LED 数据有3个通道, 所以一个LED有三个数据, 就像 'r g b r g b r g b'.
