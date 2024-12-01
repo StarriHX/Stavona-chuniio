@@ -1,14 +1,15 @@
 
 # Stavona Chuniio
 
-Version D24.11.27  
-Updated on 2024/11/27
+Version 1.00
+Updated on 2024/12/1
 
 ## 功能
 - 基本功能
 - 支持热插拔，没有设备时也不会导致timeout
 - 支持使用原生Ground Slider配合自制Air
 - 支持调整最短回报时间，可模拟Ground Slider回报速度
+- 自动更新Dll
 
 ## 消费者使用说明
 将以下选项写入到segatools.ini（如果已经有了就直接改）
